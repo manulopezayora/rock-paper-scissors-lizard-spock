@@ -154,17 +154,6 @@
   cursor: pointer;
 }
 
-.btn {
-  width: 150px;
-  padding: 10px 0;
-  border-radius: 0.5em;
-  border: 2px solid var(--light);
-  box-shadow: var(--shadow);
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  cursor: pointer;
-}
-
 .form__btn {
   background-color: var(--light);
 }
