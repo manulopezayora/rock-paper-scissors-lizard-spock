@@ -16,7 +16,7 @@
   display: none;
 }
 
-.rules__modal--active {
+.rules__modal_active {
   display: block;
 }
 
@@ -39,7 +39,7 @@
   color: var(--header-outline);
 }
 
-.close-modal {
+.close_modal {
   background-color: transparent;
   border: none;
   font-size: 4em;
@@ -54,7 +54,7 @@
 }
 
 @media screen and (min-width: 400px) {
-  .rules__modal--active {
+  .rules__modal_active {
     height: 100%;
     width: 100%;
     display: flex;
