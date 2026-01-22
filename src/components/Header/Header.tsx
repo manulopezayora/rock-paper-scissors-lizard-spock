@@ -10,11 +10,11 @@ export const Header = () => {
             </h1>
             <div className={styles.score}>
                 <p className={styles.score__title}>User score</p>
-                <p id="user-score-value" className={styles.score__value}></p>
+                <p className={styles.score__value}>0</p>
             </div>
             <div className={styles.score}>
                 <p className={styles.score__title}>cpu score</p>
-                <p id="cpu-score-value" className={styles.score__value}></p>
+                <p className={styles.score__value}>0</p>
             </div>
         </header>
     )
