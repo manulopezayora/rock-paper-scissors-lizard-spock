@@ -27,11 +27,23 @@
   text-decoration: none;
 }
 
-
-
-.app {
-  width: 100%;
+.rounds_selector {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 1.5rem;
 }
+
+.rounds_selector__btn {
+  background-color: var(--light);
+  font-family: "Barlow Semi Condensed", sans-serif;
+  font-size: 18px;
+}
+
+
+
+
 
 .countdown {
   margin-bottom: 20px;
@@ -127,24 +139,6 @@
   box-shadow: 0 5px 0 hsl(349, 78%, 46%);
 }
 
-.form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.form__fields {
-  width: 100%;
-  padding: 20px;
-  display: flex;
-  justify-content: center;
-}
-
-.form__title {
-  text-shadow: var(--shadow);
-}
-
 .rounds {
   padding: 20px 70px;
   background-color: var(--light);
@@ -153,12 +147,6 @@
   font-size: 18px;
   cursor: pointer;
 }
-
-.form__btn {
-  background-color: var(--light);
-}
-
-
 
 @media screen and (min-width: 400px) {
   .container {
