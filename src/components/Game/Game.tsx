@@ -13,7 +13,7 @@ interface GameProps {
 export const Game = ({ game, rules }: GameProps) => {
     const { play, lastUserMove, lastCpuMove, isFinished, showResult, setShowResult, roundWinner, gameWinner, resetGame } = game;
 
-    const tokenComponent = (move: string) => {
+    const getTokenComponent = (move: string) => {
         switch (move) {
             case MOVES.rock:
                 return <RockSVG />;
@@ -44,12 +44,12 @@ export const Game = ({ game, rules }: GameProps) => {
                         <section className={styles.table + " " + styles.tableVS}>
                             <div className={styles.token + " " + styles[lastUserMove!]}>
                                 <div className={styles.token_outline_top}>
-                                    {tokenComponent(lastUserMove!)}
+                                    {getTokenComponent(lastUserMove!)}
                                 </div>
                             </div>
                             <div className={styles.token + " " + styles[lastCpuMove!]}>
                                 <div className={styles.token_outline_top}>
-                                    {tokenComponent(lastCpuMove!)}
+                                    {getTokenComponent(lastCpuMove!)}
                                 </div>
                             </div>
                         </section>
@@ -59,7 +59,7 @@ export const Game = ({ game, rules }: GameProps) => {
                         </div>
                         <div className="result-info">
                             <h2 className="result">{roundWinner === 'player' ? 'You won!' : roundWinner === 'cpu' ? 'CPU won!' : 'It\'s a tie!'}</h2>
-                            <button onClick={nextRound} className="btn">Next Round</button>
+                            <button onClick={nextRound} className="btn">Next</button>
                         </div>
                     </>
                 ) : (
@@ -71,7 +71,7 @@ export const Game = ({ game, rules }: GameProps) => {
                                     <Fragment key={move}>
                                         <div className={styles.token + " " + styles[move]} onClick={() => play(move)}>
                                             <div className={styles.token_outline_top}>
-                                                {tokenComponent(move)}
+                                                {getTokenComponent(move)}
                                             </div>
                                         </div>
                                     </Fragment>

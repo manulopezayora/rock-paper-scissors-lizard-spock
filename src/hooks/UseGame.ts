@@ -49,7 +49,7 @@ export const useGame = (rules: Rules) => {
         setShowResult(true);
     }
 
-    const isFinished = userScore === maxWins || cpuScore === maxWins;
+    const isFinished = !showResult && (userScore === maxWins || cpuScore === maxWins);
     const gameWinner = isFinished ? (userScore === maxWins ? 'player' : 'cpu') : null;
 
     return {
