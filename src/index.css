@@ -29,4 +29,18 @@ body {
   text-transform: uppercase;
   letter-spacing: 2px;
   cursor: pointer;
+  font-family: "Barlow Semi Condensed", sans-serif;
+}
+
+.rounds_selector {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 1.5rem;
+}
+
+.rounds_selector__btn {
+  background-color: var(--light);
+  font-size: 18px;
 }
