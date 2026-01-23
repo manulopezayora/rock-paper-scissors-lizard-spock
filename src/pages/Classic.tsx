@@ -2,9 +2,11 @@ import { Header } from '../components/Header/Header';
 import { RoundSelector } from '../components/RoundSelector/RoundSelector';
 import { RulesModal } from '../components/RulesModal/RulesModal';
 import { useGame } from '../hooks/UseGame';
+import { classicRules } from '../rules/classic';
 
 export const Classic = () => {
     const { bestOf, setBestOf, startGame, gameStarted } = useGame();
+
     return (
         <>
             <Header />
@@ -17,7 +19,7 @@ export const Classic = () => {
                 </section>
             )}
 
-            <RulesModal />
+            <RulesModal rules={classicRules}/>
 
         </>
     )
