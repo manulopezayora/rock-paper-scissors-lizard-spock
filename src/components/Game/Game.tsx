@@ -2,7 +2,9 @@ import { Fragment } from 'react/jsx-runtime';
 import PaperSVG from '../../assets/images/icon-paper.svg?react';
 import RockSVG from '../../assets/images/icon-rock.svg?react';
 import ScissorsSVG from '../../assets/images/icon-scissors.svg?react';
-import { MOVES, type Rules } from '../../rules/types';
+import { GAME_STEPS } from '../../constants/gameSteps';
+import { MOVES } from '../../constants/moves';
+import type { Rules } from '../../rules/types';
 import styles from './Game.module.css';
 
 interface GameProps {
@@ -11,7 +13,7 @@ interface GameProps {
 }
 
 export const Game = ({ game, rules }: GameProps) => {
-    const { play, lastUserMove, lastCpuMove, isFinished, showResult, setShowResult, roundWinner, gameWinner, resetGame } = game;
+    const { play, lastUserMove, lastCpuMove, setShowResult, roundWinner, gameWinner, resetGame, gameStep, setGameStep } = game;
 
     const getTokenComponent = (move: string) => {
         switch (move) {
@@ -26,61 +28,62 @@ export const Game = ({ game, rules }: GameProps) => {
 
     const nextRound = () => {
         setShowResult(false);
+        setGameStep(GAME_STEPS.SELECT_MOVE);
     }
 
     return (
         <div className={styles.game}>
-            {
-                isFinished ? (
-                    <>
-                        <div className="final-msg">
-                            <h2>{gameWinner === 'player' ? 'Congratulations!' : 'Better luck next time!'}</h2>
-                            <h3>{gameWinner === 'player' ? 'you won the game' : 'you lost the game'}</h3>
-                            <button onClick={resetGame} className="btn">Play Again?</button>
-                        </div>
-                    </>
-                ) : showResult ? (
-                    <>
-                        <section className={styles.table + " " + styles.tableVS}>
-                            <div className={styles.token + " " + styles[lastUserMove!]}>
-                                <div className={styles.token_outline_top}>
-                                    {getTokenComponent(lastUserMove!)}
-                                </div>
-                            </div>
-                            <div className={styles.token + " " + styles[lastCpuMove!]}>
-                                <div className={styles.token_outline_top}>
-                                    {getTokenComponent(lastCpuMove!)}
-                                </div>
-                            </div>
-                        </section>
-                        <div className={styles.round_info}>
-                            <span>You picked</span>
-                            <span>cpu picked</span>
-                        </div>
-                        <div className="result-info">
-                            <h2 className="result">{roundWinner === 'player' ? 'You won!' : roundWinner === 'cpu' ? 'CPU won!' : 'It\'s a tie!'}</h2>
-                            <button onClick={nextRound} className="btn">Next</button>
-                        </div>
-                    </>
-                ) : (
-                    <>
-                        <span className={styles.countdown}>Chose your move</span>
-                        <section className={styles.table}>
-                            {rules.moves.map(move => {
-                                return (
-                                    <Fragment key={move}>
-                                        <div className={styles.token + " " + styles[move]} onClick={() => play(move)}>
-                                            <div className={styles.token_outline_top}>
-                                                {getTokenComponent(move)}
-                                            </div>
+            {gameStep === GAME_STEPS.SELECT_MOVE && (
+                <>
+                    <span className={styles.countdown}>Chose your move</span>
+                    <section className={styles.table}>
+                        {rules.moves.map(move => {
+                            return (
+                                <Fragment key={move}>
+                                    <div className={styles.token + " " + styles[move]} onClick={() => play(move)}>
+                                        <div className={styles.token_outline_top}>
+                                            {getTokenComponent(move)}
                                         </div>
-                                    </Fragment>
-                                )
-                            })}
-                        </section>
-                    </>
-                )
-            }
+                                    </div>
+                                </Fragment>
+                            )
+                        })}
+                    </section>
+                </>
+            )}
+            {gameStep === GAME_STEPS.IN_RESULT && (
+                <>
+                    <section className={styles.table + " " + styles.tableVS}>
+                        <div className={styles.token + " " + styles[lastUserMove!]}>
+                            <div className={styles.token_outline_top}>
+                                {getTokenComponent(lastUserMove!)}
+                            </div>
+                        </div>
+                        <div className={styles.token + " " + styles[lastCpuMove!]}>
+                            <div className={styles.token_outline_top}>
+                                {getTokenComponent(lastCpuMove!)}
+                            </div>
+                        </div>
+                    </section>
+                    <div className={styles.round_info}>
+                        <span>You picked</span>
+                        <span>cpu picked</span>
+                    </div>
+                    <div className="result-info">
+                        <h2 className="result">{roundWinner === 'player' ? 'You won!' : roundWinner === 'cpu' ? 'CPU won!' : 'It\'s a tie!'}</h2>
+                        <button onClick={nextRound} className="btn">Next</button>
+                    </div>
+                </>
+            )}
+            {gameStep === GAME_STEPS.GAME_OVER && (
+                <>
+                    <div className="final-msg">
+                        <h2>{gameWinner === 'player' ? 'Congratulations!' : 'Better luck next time!'}</h2>
+                        <h3>{gameWinner === 'player' ? 'you won the game' : 'you lost the game'}</h3>
+                        <button onClick={resetGame} className="btn">Play Again?</button>
+                    </div>
+                </>
+            )}
         </div>
     )
 }

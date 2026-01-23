@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { GAME_STEPS } from '../constants/gameSteps';
 import type { Move, RoundOption, Rules, Winner } from "../rules/types";
 
 export const useGame = (rules: Rules) => {
@@ -10,6 +11,7 @@ export const useGame = (rules: Rules) => {
     const [lastCpuMove, setLastCpuMove] = useState<Move | null>(null);
     const [showResult, setShowResult] = useState(false);
     const [roundWinner, setRoundWinner] = useState<Winner | null>(null);
+    const [gameStep, setGameStep] = useState<string>(GAME_STEPS.SELECT_MOVE);
 
     const maxWins = Math.ceil(bestOf / 2);
 
@@ -23,6 +25,7 @@ export const useGame = (rules: Rules) => {
         setRoundWinner(null);
         setGameStarted(false);
         setShowResult(false);
+        setGameStep(GAME_STEPS.SELECT_MOVE);
     }
 
     const randomMove = (): Move => rules.moves[Math.floor(Math.random() * rules.moves.length)];
@@ -40,13 +43,12 @@ export const useGame = (rules: Rules) => {
 
         if (winner === 'player') {
             setUserScore((prev) => prev + 1);
-            // setUserScore((prev) => Math.min(prev + 1, maxWins));
         } else if (winner === 'cpu') {
             setCpuScore((prev) => prev + 1);
-            // setCpuScore((prev) => Math.min(prev + 1, maxWins));
         }
 
         setShowResult(true);
+        setGameStep(GAME_STEPS.IN_RESULT);
     }
 
     const isFinished = !showResult && (userScore === maxWins || cpuScore === maxWins);
@@ -68,5 +70,7 @@ export const useGame = (rules: Rules) => {
         setShowResult,
         roundWinner,
         gameWinner,
+        gameStep: isFinished ? GAME_STEPS.GAME_OVER : gameStep,
+        setGameStep,
     }
 }
