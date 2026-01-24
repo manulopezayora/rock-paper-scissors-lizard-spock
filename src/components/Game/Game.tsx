@@ -1,14 +1,9 @@
 import { Fragment } from 'react/jsx-runtime';
-import LizardSVG from '../../assets/images/icon-lizard.svg?react';
-import PaperSVG from '../../assets/images/icon-paper.svg?react';
-import RockSVG from '../../assets/images/icon-rock.svg?react';
-import ScissorsSVG from '../../assets/images/icon-scissors.svg?react';
-import SpockSVG from '../../assets/images/icon-spock.svg?react';
 import { GAME_STEPS } from '../../constants/gameSteps';
-import { MOVES } from '../../constants/moves';
 import type { useGame } from '../../hooks/UseGame';
 import type { Rules } from '../../rules/types';
 import { GameResult } from '../GameResult/GameResult';
+import { GameToken } from '../GameToken/GameToken';
 import styles from './Game.module.css';
 
 type GameState<M extends string> = ReturnType<typeof useGame<M>>
@@ -20,21 +15,6 @@ interface GameProps<M extends string> {
 
 export const Game = <M extends string> ({ game, rules }: GameProps<M>) => {
     const { play, lastUserMove, lastCpuMove, setShowResult, roundWinner, gameWinner, resetGame, gameStep, setGameStep } = game;
-
-    const getTokenComponent = <M extends string> (move: M) => {
-        switch (move) {
-            case MOVES.rock:
-                return <RockSVG />;
-            case MOVES.paper:
-                return <PaperSVG />;
-            case MOVES.scissors:
-                return <ScissorsSVG />;
-            case MOVES.lizard:
-                return <LizardSVG />;
-            case MOVES.spock:
-                return <SpockSVG />;
-        }
-    }
 
     const nextRound = () => {
         setShowResult(false);
@@ -50,11 +30,7 @@ export const Game = <M extends string> ({ game, rules }: GameProps<M>) => {
                         {rules.moves.map(move => {
                             return (
                                 <Fragment key={move}>
-                                    <div className={styles.token + " " + styles[move]} onClick={() => play(move)}>
-                                        <div className={styles.token_outline_top}>
-                                            {getTokenComponent(move)}
-                                        </div>
-                                    </div>
+                                    <GameToken<M> token={move} onClick={() => play(move)} />
                                 </Fragment>
                             )
                         })}
@@ -64,16 +40,8 @@ export const Game = <M extends string> ({ game, rules }: GameProps<M>) => {
             {gameStep === GAME_STEPS.IN_RESULT && (
                 <>
                     <section className={styles.table + " " + styles.tableVS}>
-                        <div className={styles.token + " " + styles[lastUserMove!]}>
-                            <div className={styles.token_outline_top}>
-                                {getTokenComponent(lastUserMove!)}
-                            </div>
-                        </div>
-                        <div className={styles.token + " " + styles[lastCpuMove!]}>
-                            <div className={styles.token_outline_top}>
-                                {getTokenComponent(lastCpuMove!)}
-                            </div>
-                        </div>
+                        <GameToken<M> token={lastUserMove!} />
+                        <GameToken<M> token={lastCpuMove!} />
                     </section>
                     <div className={styles.round_info}>
                         <span>You picked</span>

@@ -23,57 +23,6 @@
   background-image: none;
 }
 
-.token {
-  margin: 12px;
-  height: 120px;
-  width: 120px;
-  background-color: var(--light);
-  border: 12px solid;
-  border-radius: 50%;
-  display: flex;
-  cursor: pointer;
-  transition: 0.02s;
-}
-
-.token_outline_top {
-  box-shadow: 0 -4px 0 #d0d0d0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-  align-self: stretch;
-  border-radius: 50%;
-}
-
-.paper {
-  border-color: #4865f4;
-  box-shadow: 0 5px 0 #2948e4;
-}
-
-.scissors {
-  border-color: #ec9e0e;
-  box-shadow: 0 5px 0 #c2840a;
-}
-
-.rock {
-  border-color: #dc2e4e;
-  box-shadow: 0 5px 0 #d11a3b;
-}
-
-.lizard {
-  border-color: #962edc;
-  box-shadow: 0 5px 0 #881ad1;
-}
-
-.spock {
-  border-color: #2e9cdc;
-  box-shadow: 0 5px 0 #1a8ed1;
-}
-
-.token:active {
-  transform: scale(0.9);
-}
-
 .round_info {
   display: flex;
   justify-content: space-around;
