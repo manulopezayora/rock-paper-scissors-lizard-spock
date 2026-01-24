@@ -1,12 +1,11 @@
 import type { ComponentType, SVGProps } from 'react';
 
 export type RoundOption = 1 | 3 | 5;
-export type Move = 'rock' | 'paper' | 'scissors';
 export type Winner = 'player' | 'cpu' | 'draw';
 
-export interface Rules {
+export type Rules<M extends string> = {
     name: string;
-    moves: Move[];
-    whoWins: (player: Move, cpu: Move) => Winner;
+    moves: M[];
+    whoWins: (player: M, cpu: M) => Winner;
     RulesDiagram: ComponentType<SVGProps<SVGSVGElement>>;
 }

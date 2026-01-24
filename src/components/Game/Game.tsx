@@ -1,21 +1,26 @@
 import { Fragment } from 'react/jsx-runtime';
+import LizardSVG from '../../assets/images/icon-lizard.svg?react';
 import PaperSVG from '../../assets/images/icon-paper.svg?react';
 import RockSVG from '../../assets/images/icon-rock.svg?react';
 import ScissorsSVG from '../../assets/images/icon-scissors.svg?react';
+import SpockSVG from '../../assets/images/icon-spock.svg?react';
 import { GAME_STEPS } from '../../constants/gameSteps';
 import { MOVES } from '../../constants/moves';
+import type { useGame } from '../../hooks/UseGame';
 import type { Rules } from '../../rules/types';
 import styles from './Game.module.css';
 
-interface GameProps {
-    game: ReturnType<typeof import('../../hooks/UseGame').useGame>;
-    rules: Rules;
+type GameState<M extends string> = ReturnType<typeof useGame<M>>
+
+interface GameProps<M extends string> {
+    game: GameState<M>;
+    rules: Rules<M>;
 }
 
-export const Game = ({ game, rules }: GameProps) => {
+export const Game = <M extends string> ({ game, rules }: GameProps<M>) => {
     const { play, lastUserMove, lastCpuMove, setShowResult, roundWinner, gameWinner, resetGame, gameStep, setGameStep } = game;
 
-    const getTokenComponent = (move: string) => {
+    const getTokenComponent = <M extends string> (move: M) => {
         switch (move) {
             case MOVES.rock:
                 return <RockSVG />;
@@ -23,6 +28,10 @@ export const Game = ({ game, rules }: GameProps) => {
                 return <PaperSVG />;
             case MOVES.scissors:
                 return <ScissorsSVG />;
+            case MOVES.lizard:
+                return <LizardSVG />;
+            case MOVES.spock:
+                return <SpockSVG />;
         }
     }
 

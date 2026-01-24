@@ -1,7 +1,7 @@
-import type { Move } from '../rules/types';
-
-export const MOVES: Record<string, Move> = {
+export const MOVES: Record<string, string> = {
     rock: 'rock',
     paper: 'paper',
     scissors: 'scissors',
+    lizard: 'lizard',
+    spock: 'spock',
 } as const;

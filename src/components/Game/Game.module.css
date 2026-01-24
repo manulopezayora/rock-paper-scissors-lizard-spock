@@ -56,8 +56,18 @@
 }
 
 .rock {
-  border-color: hsl(349, 71%, 52%);
-  box-shadow: 0 5px 0 hsl(349, 78%, 46%);
+  border-color: #dc2e4e;
+  box-shadow: 0 5px 0 #d11a3b;
+}
+
+.lizard {
+  border-color: #962edc;
+  box-shadow: 0 5px 0 #881ad1;
+}
+
+.spock {
+  border-color: #2e9cdc;
+  box-shadow: 0 5px 0 #1a8ed1;
 }
 
 .token:active {

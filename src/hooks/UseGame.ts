@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { GAME_STEPS } from '../constants/gameSteps';
-import type { Move, RoundOption, Rules, Winner } from "../rules/types";
+import type { RoundOption, Rules, Winner } from "../rules/types";
 
-export const useGame = (rules: Rules) => {
+export const useGame = <M extends string> (rules: Rules<M>) => {
     const [bestOf, setBestOf] = useState<RoundOption>(1);
     const [userScore, setUserScore] = useState(0);
     const [cpuScore, setCpuScore] = useState(0);
     const [gameStarted, setGameStarted] = useState(false);
-    const [lastUserMove, setLastUserMove] = useState<Move | null>(null);
-    const [lastCpuMove, setLastCpuMove] = useState<Move | null>(null);
+    const [lastUserMove, setLastUserMove] = useState<M | null>(null);
+    const [lastCpuMove, setLastCpuMove] = useState<M | null>(null);
     const [showResult, setShowResult] = useState(false);
     const [roundWinner, setRoundWinner] = useState<Winner | null>(null);
     const [gameStep, setGameStep] = useState<string>(GAME_STEPS.SELECT_MOVE);
@@ -28,9 +28,9 @@ export const useGame = (rules: Rules) => {
         setGameStep(GAME_STEPS.SELECT_MOVE);
     }
 
-    const randomMove = (): Move => rules.moves[Math.floor(Math.random() * rules.moves.length)];
+    const randomMove = (): M => rules.moves[Math.floor(Math.random() * rules.moves.length)];
 
-    const play = (playerMove: Move): void => {
+    const play = (playerMove: M): void => {
         if (!gameStarted) return;
 
         setLastUserMove(playerMove);
