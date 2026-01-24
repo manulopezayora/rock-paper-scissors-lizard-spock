@@ -79,7 +79,7 @@ export const Game = <M extends string> ({ game, rules }: GameProps<M>) => {
                         <span>cpu picked</span>
                     </div>
                     <div className="result-info">
-                        <h2 className="result">{roundWinner === 'player' ? 'You won!' : roundWinner === 'cpu' ? 'CPU won!' : 'It\'s a tie!'}</h2>
+                        <h2 className="result">{roundWinner === 'player' ? 'Yeah! You won!' : roundWinner === 'cpu' ? 'Oops, You lose' : 'It\'s a tie!'}</h2>
                         <button onClick={nextRound} className="btn">Next</button>
                     </div>
                 </>
