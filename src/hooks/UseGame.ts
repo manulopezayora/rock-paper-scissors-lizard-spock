@@ -52,7 +52,7 @@ export const useGame = <M extends string> (rules: Rules<M>) => {
     }
 
     const isFinished = !showResult && (userScore === maxWins || cpuScore === maxWins);
-    const gameWinner = isFinished ? (userScore === maxWins ? 'player' : 'cpu') : null;
+    const gameWinner: 'player' | 'cpu' | null = isFinished ? (userScore === maxWins ? 'player' : 'cpu') : null;
 
     return {
         bestOf,

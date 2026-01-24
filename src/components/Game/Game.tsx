@@ -8,6 +8,7 @@ import { GAME_STEPS } from '../../constants/gameSteps';
 import { MOVES } from '../../constants/moves';
 import type { useGame } from '../../hooks/UseGame';
 import type { Rules } from '../../rules/types';
+import { GameResult } from '../GameResult/GameResult';
 import styles from './Game.module.css';
 
 type GameState<M extends string> = ReturnType<typeof useGame<M>>
@@ -85,13 +86,7 @@ export const Game = <M extends string> ({ game, rules }: GameProps<M>) => {
                 </>
             )}
             {gameStep === GAME_STEPS.GAME_OVER && (
-                <>
-                    <div className="final-msg">
-                        <h2>{gameWinner === 'player' ? 'Congratulations!' : 'Better luck next time!'}</h2>
-                        <h3>{gameWinner === 'player' ? 'you won the game' : 'you lost the game'}</h3>
-                        <button onClick={resetGame} className="btn">Play Again?</button>
-                    </div>
-                </>
+                <GameResult gameWinner={gameWinner!} resetGame={resetGame} />
             )}
         </div>
     )

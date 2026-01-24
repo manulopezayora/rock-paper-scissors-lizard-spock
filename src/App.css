@@ -41,13 +41,6 @@
   text-align: center;
 }
 
-.final-msg {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
 .link-btn {
   margin-top: 2em;
   text-decoration: none;
