@@ -1,9 +1,11 @@
 import { useState } from 'react';
+import type { ClassicMove } from '../../rules/classic';
+import type { LizardSpockMove } from '../../rules/lizardSpock';
 import type { Rules } from '../../rules/types';
 import styles from './RulesModal.module.css';
 
 interface RulesModalProps {
-  rules: Rules
+  rules: Rules<ClassicMove> | Rules<LizardSpockMove>;
 }
 
 export const RulesModal = ({ rules }: RulesModalProps) => {
