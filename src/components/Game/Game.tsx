@@ -1,9 +1,9 @@
-import { Fragment } from 'react/jsx-runtime';
 import { GAME_STEPS } from '../../constants/gameSteps';
 import type { useGame } from '../../hooks/UseGame';
 import type { Rules } from '../../rules/types';
 import { GameResult } from '../GameResult/GameResult';
 import { GameToken } from '../GameToken/GameToken';
+import { SelectMove } from '../SelectMove/SelectMove';
 import styles from './Game.module.css';
 
 type GameState<M extends string> = ReturnType<typeof useGame<M>>
@@ -24,24 +24,13 @@ export const Game = <M extends string> ({ game, rules }: GameProps<M>) => {
     return (
         <div className={styles.game}>
             {gameStep === GAME_STEPS.SELECT_MOVE && (
-                <>
-                    <span className={styles.countdown}>Chose your move</span>
-                    <section className={styles.table}>
-                        {rules.moves.map(move => {
-                            return (
-                                <Fragment key={move}>
-                                    <GameToken<M> token={move} onClick={() => play(move)} />
-                                </Fragment>
-                            )
-                        })}
-                    </section>
-                </>
+                <SelectMove rulesType={rules.name} moves={rules.moves} play={play} />
             )}
             {gameStep === GAME_STEPS.IN_RESULT && (
                 <>
                     <section className={styles.table + " " + styles.tableVS}>
-                        <GameToken<M> token={lastUserMove!} />
-                        <GameToken<M> token={lastCpuMove!} />
+                        <GameToken token={lastUserMove!} />
+                        <GameToken token={lastCpuMove!} />
                     </section>
                     <div className={styles.round_info}>
                         <span>You picked</span>

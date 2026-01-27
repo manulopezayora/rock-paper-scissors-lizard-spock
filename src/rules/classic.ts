@@ -22,7 +22,7 @@ const whoWins = (player: ClassicMove, cpu: ClassicMove): Winner => {
 }
 
 export const classicRules: Rules<ClassicMove> = {
-    name: 'Classic',
+    name: 'classic',
     moves: ['rock', 'paper', 'scissors'],
     whoWins,
     RulesDiagram: RulesClassic,

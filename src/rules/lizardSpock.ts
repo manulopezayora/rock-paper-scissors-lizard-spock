@@ -24,7 +24,7 @@ const whoWins = (player: LizardSpockMove, cpu: LizardSpockMove): Winner => {
 }
 
 export const lizardSpockRules: Rules<LizardSpockMove> = {
-    name: 'Lizard Spock',
+    name: 'lizardSpock',
     moves: ['rock', 'paper', 'scissors', 'lizard', 'spock'],
     whoWins,
     RulesDiagram: RulesLizard
