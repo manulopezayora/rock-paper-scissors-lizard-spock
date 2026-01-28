@@ -2,25 +2,6 @@
   margin: auto;
 }
 
-.countdown {
-  margin-bottom: 20px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.table {
-  height: auto;
-  background-image: url("../../assets/images/bg-triangle.svg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 60%;
-
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
 .tableVS {
   background-image: none;
 }
@@ -31,13 +12,6 @@
 }
 
 @media screen and (min-width: 400px) {
-  .table {
-    width: 400px;
-    margin-left: auto;
-    margin-right: auto;
-    justify-content: space-around;
-  }
-
   .round_info {
     width: 400px;
     margin-left: auto;
