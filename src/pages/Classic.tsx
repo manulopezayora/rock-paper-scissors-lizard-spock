@@ -10,7 +10,7 @@ export const Classic = () => {
 
     return (
         <>
-            <Header score={{ userScore: game.userScore, cpuScore: game.cpuScore }} rules={classicRules} />
+            <Header score={{ userScore: game.userScore, cpuScore: game.cpuScore }} rulesName={classicRules.name} />
 
             {!game.gameStarted && (
                 <section className="rounds_selector">
