@@ -65,8 +65,6 @@ export const useGame = <M extends string> (rules: Rules<M>) => {
         play,
         lastUserMove,
         lastCpuMove,
-        isFinished,
-        showResult,
         setShowResult,
         roundWinner,
         gameWinner,
