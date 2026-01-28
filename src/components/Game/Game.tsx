@@ -4,7 +4,6 @@ import type { Rules } from '../../rules/types';
 import { GameResult } from '../GameResult/GameResult';
 import { RoundInfo } from '../RoundInfo/RoundInfo';
 import { SelectMove } from '../SelectMove/SelectMove';
-import styles from './Game.module.css';
 
 type GameState<M extends string> = ReturnType<typeof useGame<M>>
 
@@ -22,7 +21,7 @@ export const Game = <M extends string> ({ game, rules }: GameProps<M>) => {
     }
 
     return (
-        <div className={styles.game}>
+        <div>
             {gameStep === GAME_STEPS.SELECT_MOVE && (
                 <SelectMove rulesType={rules.name} moves={rules.moves} play={play} />
             )}
