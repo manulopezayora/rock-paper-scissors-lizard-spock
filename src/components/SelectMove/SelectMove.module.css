@@ -1,0 +1,107 @@
+.select_move {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    margin: 20px 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.table {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    margin: auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.token {
+    position: absolute;
+    width: 96px;
+    height: 96px;
+}
+
+.classic .token:nth-child(1) {
+    transform: translate(55%, 50%);
+}
+.classic .token:nth-child(2) {
+    transform: translate(235%, 50%);
+}
+.classic .token:nth-child(3) {
+    transform: translate(145%, 220%);
+}
+
+.lizardSpock .token:nth-child(1) {
+    transform: translate(150%, 30%);
+}
+.lizardSpock .token:nth-child(2) {
+    transform: translate(250%, 110%);
+}
+.lizardSpock .token:nth-child(3) {
+    transform: translate(210%, 250%);
+}
+.lizardSpock .token:nth-child(4) {
+    transform: translate(80%, 250%);
+}
+.lizardSpock .token:nth-child(5) {
+    transform: translate(50%, 110%);
+}
+
+.classic {
+    background-image: url("../../assets/images/bg-triangle.svg");
+}
+
+.lizardSpock {
+    background-image: url("../../assets/images/bg-pentagon.svg");
+}
+
+@media screen and (min-width: 490px) {
+    .title {
+        margin-bottom: 80px;
+    }
+
+    .table {
+        width: 400px;
+        background-size: 80%;
+    }
+
+    .classic .token:nth-child(1) {
+        transform: translate(20%, 0);
+    }
+
+    .classic .token:nth-child(2) {
+        transform: translate(250%, 0);
+    }
+
+    .classic .token:nth-child(3) {
+        transform: translate(130%, 240%);
+    }
+
+    .lizardSpock .token:nth-child(1) {
+        transform: translate(130%, -20%);
+    }
+
+    .lizardSpock .token:nth-child(2) {
+        transform: translate(280%, 100%);
+    }
+
+    .lizardSpock .token:nth-child(3) {
+        transform: translate(230%, 280%);
+    }
+
+    .lizardSpock .token:nth-child(4) {
+        transform: translate(30%, 280%);
+    }
+
+    .lizardSpock .token:nth-child(5) {
+        transform: translate(-20%, 100%);
+    }
+}

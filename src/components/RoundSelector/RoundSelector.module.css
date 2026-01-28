@@ -1,0 +1,14 @@
+.round_selector {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    margin: 1rem 0;
+}
+
+@media screen and (min-width: 420px) {
+    .round_selector {
+        flex-direction: row;
+        gap: 1rem;
+    }
+}

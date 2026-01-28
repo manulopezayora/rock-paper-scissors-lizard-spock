@@ -1,0 +1,32 @@
+.table {
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.round_info {
+  display: flex;
+  justify-content: space-around;
+}
+
+.result_info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.result {
+  text-align: center;
+}
+
+@media screen and (min-width: 400px) {
+  .round_info {
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-around;
+  }
+}
