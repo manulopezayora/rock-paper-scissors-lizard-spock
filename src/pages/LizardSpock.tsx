@@ -10,7 +10,7 @@ export const LizardSpock = () => {
 
       return (
           <>
-              <Header score={{ userScore: game.userScore, cpuScore: game.cpuScore }} rules={lizardSpockRules} />
+              <Header score={{ userScore: game.userScore, cpuScore: game.cpuScore }} rulesName={lizardSpockRules.name} />
 
               {!game.gameStarted && (
                   <section className="rounds_selector">

@@ -1,4 +1,4 @@
-import type { Rules } from '../../rules/types';
+import type { RulesType } from '../../rules/types';
 import styles from './Header.module.css';
 
 interface HeaderProps {
@@ -6,11 +6,11 @@ interface HeaderProps {
         userScore: number;
         cpuScore: number;
     };
-    rules: Rules;
+    rulesName: RulesType;
 }
 
-const getTitle = (rules: Rules) => (
-    rules?.name === 'Classic' ? (
+const getTitle = (rulesName: RulesType) => (
+    rulesName === 'classic' ? (
         <h1 className={styles.title}>
             Rock <br />
             Paper <br />
@@ -27,10 +27,10 @@ const getTitle = (rules: Rules) => (
     )
 );
 
-export const Header = ({ score, rules }: HeaderProps) => {
+export const Header = ({ score, rulesName }: HeaderProps) => {
     return (
         <header className={styles.header}>
-            {getTitle(rules)}
+            {getTitle(rulesName)}
             <div className={styles.score}>
                 <p className={styles.score__title}>User score</p>
                 <p className={styles.score__value}>{score?.userScore}</p>
