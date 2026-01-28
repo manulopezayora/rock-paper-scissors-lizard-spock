@@ -1,22 +1,3 @@
 .game {
   margin: auto;
 }
-
-.tableVS {
-  background-image: none;
-}
-
-.round_info {
-  display: flex;
-  justify-content: space-around;
-}
-
-@media screen and (min-width: 400px) {
-  .round_info {
-    width: 400px;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    justify-content: space-around;
-  }
-}

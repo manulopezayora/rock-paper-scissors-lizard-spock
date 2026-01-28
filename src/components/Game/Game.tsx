@@ -2,7 +2,7 @@ import { GAME_STEPS } from '../../constants/gameSteps';
 import type { useGame } from '../../hooks/UseGame';
 import type { Rules } from '../../rules/types';
 import { GameResult } from '../GameResult/GameResult';
-import { GameToken } from '../GameToken/GameToken';
+import { RoundInfo } from '../RoundInfo/RoundInfo';
 import { SelectMove } from '../SelectMove/SelectMove';
 import styles from './Game.module.css';
 
@@ -27,20 +27,7 @@ export const Game = <M extends string> ({ game, rules }: GameProps<M>) => {
                 <SelectMove rulesType={rules.name} moves={rules.moves} play={play} />
             )}
             {gameStep === GAME_STEPS.IN_RESULT && (
-                <>
-                    <section className={styles.table + " " + styles.tableVS}>
-                        <GameToken token={lastUserMove!} />
-                        <GameToken token={lastCpuMove!} />
-                    </section>
-                    <div className={styles.round_info}>
-                        <span>You picked</span>
-                        <span>cpu picked</span>
-                    </div>
-                    <div className="result-info">
-                        <h2 className="result">{roundWinner === 'player' ? 'Yeah! You won!' : roundWinner === 'cpu' ? 'Oops, You lose' : 'It\'s a tie!'}</h2>
-                        <button onClick={nextRound} className="btn">Next</button>
-                    </div>
-                </>
+                <RoundInfo lastUserMove={lastUserMove} lastCpuMove={lastCpuMove} roundWinner={roundWinner} nextRound={nextRound} />
             )}
             {gameStep === GAME_STEPS.GAME_OVER && (
                 <GameResult gameWinner={gameWinner!} resetGame={resetGame} />

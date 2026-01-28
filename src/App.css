@@ -27,20 +27,6 @@
   text-decoration: none;
 }
 
-
-
-
-.result-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.result {
-  text-align: center;
-}
-
 .link-btn {
   margin-top: 2em;
   text-decoration: none;
