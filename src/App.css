@@ -12,7 +12,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  position: relative
+  position: relative;
+  align-items: center;
 }
 
 .nav {
@@ -30,6 +31,5 @@
 @media screen and (min-width: 400px) {
   .container {
     align-items: center;
-    position: relative
   }
 }
