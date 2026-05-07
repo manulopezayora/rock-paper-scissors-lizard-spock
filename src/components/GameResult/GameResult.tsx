@@ -7,10 +7,10 @@ interface GameResultProps {
 
 export const GameResult = ({ gameWinner, resetGame }: GameResultProps) => {
     return (
-        <div className={styles.final_msg}>
+        <div className={styles.final_msg} role="status" aria-live="polite">
             <h2>{gameWinner === 'player' ? 'Congratulations!' : 'Better luck next time!'}</h2>
             <h3>{gameWinner === 'player' ? 'you won the game' : 'you lost the game'}</h3>
-            <button onClick={resetGame} className="btn">Play Again?</button>
+            <button onClick={resetGame} className="btn" type="button">Play Again?</button>
         </div>
     )
 }
