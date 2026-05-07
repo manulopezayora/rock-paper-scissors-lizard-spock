@@ -49,6 +49,11 @@
   outline: none;
 }
 
+.close_modal:focus-visible {
+  outline: 2px solid var(--header-outline);
+  outline-offset: 2px;
+}
+
 .hidden {
   display: none;
 }
