@@ -13,13 +13,11 @@ export const SelectMove = <M extends string>({ rulesType, moves, play }: SelectM
         <section className={styles.select_move}>
             <span className={styles.title}>Chose your move</span>
             <section className={styles.table + ' ' + styles[rulesType]}>
-                {moves.map(move => {
-                    return (
-                        <div key={move} className={styles.token}>
-                            <GameToken token={move} onClick={() => play(move)} />
-                        </div>
-                    )
-                })}
+                {moves.map(move => (
+                    <div key={move} className={styles.token}>
+                        <GameToken token={move} onClick={() => play(move)} />
+                    </div>
+                ))}
             </section>
         </section>
     )
