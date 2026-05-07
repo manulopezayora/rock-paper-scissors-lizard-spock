@@ -14,25 +14,30 @@ interface GameTokenProps<M extends string> {
 const getTokenComponent = <M extends string>(move: M) => {
     switch (move) {
         case MOVES.rock:
-            return <RockSVG />;
+            return <RockSVG aria-hidden="true" />;
         case MOVES.paper:
-            return <PaperSVG />;
+            return <PaperSVG aria-hidden="true" />;
         case MOVES.scissors:
-            return <ScissorsSVG />;
+            return <ScissorsSVG aria-hidden="true" />;
         case MOVES.lizard:
-            return <LizardSVG />;
+            return <LizardSVG aria-hidden="true" />;
         case MOVES.spock:
-            return <SpockSVG />;
+            return <SpockSVG aria-hidden="true" />;
     }
 }
 
 export const GameToken = <M extends string>({ token, onClick }: GameTokenProps<M>) => {
     return (
-        <div className={styles.token + " " + styles[token!]} onClick={onClick}>
-            <div className={styles.token_outline_top}>
+        <button 
+            className={styles.token + " " + styles[token!]} 
+            onClick={onClick}
+            type="button"
+            aria-label={`Select ${token}`}
+        >
+            <span className={styles.token_outline_top}>
                 {getTokenComponent(token!)}
-            </div>
-        </div>
+            </span>
+        </button>
     )
 }
 

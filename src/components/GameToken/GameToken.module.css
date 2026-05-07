@@ -8,6 +8,13 @@
     display: flex;
     cursor: pointer;
     transition: 0.02s;
+    font: inherit;
+    padding: 0;
+}
+
+.token:focus-visible {
+    outline: 2px solid #005fcc;
+    outline-offset: 2px;
 }
 
 .token_outline_top {
