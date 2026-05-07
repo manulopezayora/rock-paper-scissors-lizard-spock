@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import type { RulesType } from '../../rules/types';
 import styles from './Header.module.css';
 
@@ -27,7 +28,7 @@ const getTitle = (rulesName: RulesType) => (
     )
 );
 
-export const Header = ({ score, rulesName }: HeaderProps) => {
+export const Header = memo(({ score, rulesName }: HeaderProps) => {
     return (
         <header className={styles.header}>
             {getTitle(rulesName)}
@@ -41,4 +42,4 @@ export const Header = ({ score, rulesName }: HeaderProps) => {
             </div>
         </header>
     )
-}
+});
