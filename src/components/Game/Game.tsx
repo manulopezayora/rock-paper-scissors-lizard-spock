@@ -1,11 +1,9 @@
 import { GAME_STEPS } from '../../constants/gameSteps';
-import type { useGame } from '../../hooks/UseGame';
+import type { GameState } from '../../hooks/UseGame';
 import type { Rules } from '../../rules/types';
 import { GameResult } from '../GameResult/GameResult';
 import { RoundInfo } from '../RoundInfo/RoundInfo';
 import { SelectMove } from '../SelectMove/SelectMove';
-
-type GameState<M extends string> = ReturnType<typeof useGame<M>>
 
 interface GameProps<M extends string> {
     game: GameState<M>;

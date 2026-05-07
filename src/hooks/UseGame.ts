@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { GAME_STEPS } from '../constants/gameSteps';
-import type { RoundOption, Rules, Winner } from "../rules/types";
+import type { RoundOption, Rules, Winner, GameStep } from "../rules/types";
+
+export type GameState<M extends string> = ReturnType<typeof useGame<M>>
 
 export const useGame = <M extends string> (rules: Rules<M>) => {
     const [bestOf, setBestOf] = useState<RoundOption>(1);
@@ -11,7 +13,7 @@ export const useGame = <M extends string> (rules: Rules<M>) => {
     const [lastCpuMove, setLastCpuMove] = useState<M | null>(null);
     const [showResult, setShowResult] = useState(false);
     const [roundWinner, setRoundWinner] = useState<Winner | null>(null);
-    const [gameStep, setGameStep] = useState<string>(GAME_STEPS.SELECT_MOVE);
+    const [gameStep, setGameStep] = useState<GameStep>(GAME_STEPS.SELECT_MOVE);
 
     const maxWins = Math.ceil(bestOf / 2);
 

@@ -3,6 +3,7 @@ import type { ComponentType, SVGProps } from 'react';
 export type RoundOption = 1 | 3 | 5;
 export type Winner = 'player' | 'cpu' | 'draw';
 export type RulesType = 'classic' | 'lizardSpock';
+export type GameStep = 'select_move' | 'in_result' | 'game_over';
 
 export type Rules<M extends string> = {
     name: RulesType;
