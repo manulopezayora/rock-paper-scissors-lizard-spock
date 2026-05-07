@@ -9,6 +9,7 @@ import styles from './GameToken.module.css';
 interface GameTokenProps<M extends string> {
     token: M | null;
     onClick?: () => void;
+    interactive?: boolean;
 }
 
 const getTokenComponent = <M extends string>(move: M) => {
@@ -26,13 +27,17 @@ const getTokenComponent = <M extends string>(move: M) => {
     }
 }
 
-export const GameToken = <M extends string>({ token, onClick }: GameTokenProps<M>) => {
+export const GameToken = <M extends string>({ token, onClick, interactive = true }: GameTokenProps<M>) => {
+    const handleClick = () => {
+        if (onClick) onClick();
+    };
+
     return (
         <button 
-            className={styles.token + " " + styles[token!]} 
-            onClick={onClick}
+            className={`${styles.token} ${styles[token!]} ${interactive ? styles.interactive : ''}`}
+            onClick={handleClick}
             type="button"
-            aria-label={`Select ${token}`}
+            aria-label={onClick ? `Select ${token}` : `${token} selected`}
         >
             <span className={styles.token_outline_top}>
                 {getTokenComponent(token!)}
